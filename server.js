@@ -25,13 +25,15 @@ mongoose
     // useFindAndModify ensures that the findAndModify is used for all queries
     useFindAndModify: false,
     // useUnifiedTopology ensures that the server discovery and monitoring engine is used
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
   })
   .then(() => console.log('DB connection successful!'));
 
-const port = process.env.PORT || 4000;
-const server = app.listen(port, () => {
-  console.log(`App running on port ${port}...`);
+const hostname = '0.0.0.0';
+const port = process.env.port || 3000;
+
+const server = app.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
 });
 
 process.on('unhandledRejection', err => {
